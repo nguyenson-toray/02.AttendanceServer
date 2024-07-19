@@ -1,0 +1,705 @@
+2024-05-04 09:23:20,418 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:23:43,343 - fps - INFO - Shutting down...
+2024-05-04 09:23:43,350 - fps - ERROR - 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+2024-05-04 09:23:44,092 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:25:04,572 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:25:12,280 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:25:14,387 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:25:18,055 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 09:25:22,250 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 09:25:24,021 - fps - INFO - successfully identified the user: 1, Score: 97
+2024-05-04 09:26:24,576 - fps - INFO - Shutting down...
+2024-05-04 09:26:25,233 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:26:35,668 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:26:40,670 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:26:41,929 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:26:45,831 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 09:27:15,573 - fps - INFO - Shutting down...
+2024-05-04 09:27:16,227 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:27:24,663 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:27:26,301 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:27:27,559 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:28:33,803 - fps - INFO - Shutting down...
+2024-05-04 09:28:34,455 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:28:39,675 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:28:43,140 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:28:49,529 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:31:29,617 - fps - INFO - Shutting down...
+2024-05-04 09:31:30,343 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:31:34,135 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:31:36,453 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:31:38,650 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:32:05,208 - fps - INFO - Shutting down...
+2024-05-04 09:32:05,819 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:32:10,580 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:32:11,910 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:32:12,928 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:32:16,456 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 09:33:19,705 - fps - INFO - Shutting down...
+2024-05-04 09:33:20,322 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:33:24,042 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:33:25,563 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:33:27,494 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:33:27,507 - fps - ERROR - decode() missing 1 required positional argument: 'output'
+2024-05-04 09:34:44,085 - fps - INFO - Shutting down...
+2024-05-04 09:34:44,698 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:34:48,941 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:34:50,665 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:34:52,106 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:34:52,121 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 09:37:16,383 - fps - INFO - Shutting down...
+2024-05-04 09:37:17,009 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:37:21,984 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:37:24,447 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:37:25,950 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:37:25,963 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 09:37:38,615 - fps - INFO - Shutting down...
+2024-05-04 09:37:39,263 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:37:44,608 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:37:46,023 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:37:47,446 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:37:47,459 - fps - ERROR - 'int' object has no attribute 'decode'
+2024-05-04 09:38:47,498 - fps - INFO - Shutting down...
+2024-05-04 09:38:48,120 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:38:54,319 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:38:55,740 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:38:57,512 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:40:18,678 - fps - INFO - Shutting down...
+2024-05-04 09:40:19,269 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:40:23,583 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:40:24,911 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:40:25,927 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:40:25,939 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 09:42:32,980 - fps - INFO - Shutting down...
+2024-05-04 09:42:33,716 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:42:38,167 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:42:51,441 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:42:53,892 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:43:44,006 - fps - INFO - Shutting down...
+2024-05-04 09:43:44,634 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:43:49,104 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:44:12,566 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:44:16,558 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:44:18,074 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:44:22,261 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:44:22,277 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 09:44:50,070 - fps - INFO - Shutting down...
+2024-05-04 09:44:50,698 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 09:44:55,164 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 09:44:56,705 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 09:44:58,975 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 09:44:58,990 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 10:47:12,850 - fps - INFO - Shutting down...
+2024-05-04 10:47:13,494 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:47:17,964 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:47:22,660 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:47:24,394 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 10:50:42,218 - fps - INFO - Shutting down...
+2024-05-04 10:50:42,814 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:50:46,867 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:50:50,094 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:50:51,828 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 10:52:24,887 - fps - INFO - Shutting down...
+2024-05-04 10:52:25,500 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:52:29,724 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:52:31,445 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:52:32,585 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 10:52:32,596 - fps - ERROR - 'Byte[]' object has no attribute 'decode'
+2024-05-04 10:52:49,889 - fps - INFO - Shutting down...
+2024-05-04 10:52:50,537 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:52:54,877 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:52:56,505 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:52:57,840 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 10:52:57,853 - fps - ERROR - 'int' object has no attribute 'decode'
+2024-05-04 10:53:27,123 - fps - INFO - Shutting down...
+2024-05-04 10:53:27,717 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:53:32,264 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:53:33,553 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:53:34,917 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 10:58:34,050 - fps - INFO - Shutting down...
+2024-05-04 10:58:34,735 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 10:58:41,017 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 10:58:43,665 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 10:58:44,926 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 11:01:25,005 - fps - INFO - Shutting down...
+2024-05-04 11:01:25,642 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 11:01:30,551 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 11:01:31,579 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 11:01:32,940 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 11:01:32,953 - fps - ERROR - SIMPLE not implemented
+2024-05-04 11:39:48,468 - fps - INFO - Shutting down...
+2024-05-04 12:19:46,344 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:19:51,295 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:19:53,477 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:19:55,146 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:19:55,162 - fps - ERROR - 'Byte[]' object has no attribute 'json_pack'
+2024-05-04 12:20:29,749 - fps - INFO - Shutting down...
+2024-05-04 12:20:30,376 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:20:36,189 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:20:37,397 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:20:38,723 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:21:09,836 - fps - INFO - Shutting down...
+2024-05-04 12:21:10,481 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:21:14,550 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:21:16,202 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:21:17,563 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:33:03,248 - fps - INFO - Shutting down...
+2024-05-04 12:33:19,900 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:33:25,416 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:33:28,297 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:33:34,225 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:33:34,240 - fps - ERROR - 'Byte[]' object has no attribute 'json_pack'
+2024-05-04 12:33:48,719 - fps - INFO - Shutting down...
+2024-05-04 12:33:49,350 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:33:54,317 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:33:58,245 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:33:59,544 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:33:59,561 - fps - ERROR - 'Byte[]' object has no attribute 'json_pack'
+2024-05-04 12:35:20,252 - fps - INFO - Shutting down...
+2024-05-04 12:35:20,836 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:35:26,284 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:35:55,841 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:35:57,932 - fps - INFO - Shutting down...
+2024-05-04 12:35:58,563 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:36:01,733 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:36:12,561 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:36:14,295 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:36:14,311 - fps - ERROR - 'Byte[]' object has no attribute 'json_pack'
+2024-05-04 12:39:45,987 - fps - INFO - Shutting down...
+2024-05-04 12:39:46,584 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 12:39:54,992 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 12:39:56,250 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 12:39:57,412 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 12:39:57,430 - fps - ERROR - Object of type Byte[] is not JSON serializable
+2024-05-04 12:45:28,277 - fps - INFO - Shutting down...
+2024-05-04 14:05:05,940 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:05:10,918 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:05:12,484 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:05:14,216 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:05:14,236 - fps - ERROR - Object of type Byte[] is not JSON serializable
+2024-05-04 14:06:26,247 - fps - INFO - Shutting down...
+2024-05-04 14:06:26,855 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:06:31,027 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:06:32,597 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:06:33,935 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:06:33,946 - fps - ERROR - Invalid base64-encoded string: number of data characters (173) cannot be 1 more than a multiple of 4
+2024-05-04 14:07:23,917 - fps - INFO - Shutting down...
+2024-05-04 14:07:24,495 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:07:27,357 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:07:30,254 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:07:32,404 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:07:32,420 - fps - ERROR - Incorrect padding
+2024-05-04 14:08:05,019 - fps - INFO - Shutting down...
+2024-05-04 14:08:05,635 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:08:08,897 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:08:10,142 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:08:11,301 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:10:14,697 - fps - INFO - Shutting down...
+2024-05-04 14:10:15,297 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:10:17,567 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:10:18,388 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:10:19,677 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:10:19,690 - fps - ERROR - fromhex() argument must be str, not Byte[]
+2024-05-04 14:11:07,129 - fps - INFO - Shutting down...
+2024-05-04 14:11:07,733 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:11:09,716 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:11:10,244 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:11:10,888 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:11:10,904 - fps - ERROR - Incorrect padding
+2024-05-04 14:11:30,130 - fps - INFO - Shutting down...
+2024-05-04 14:11:30,740 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:11:32,607 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:11:33,831 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:11:34,814 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:11:34,824 - fps - ERROR - Incorrect padding
+2024-05-04 14:11:49,660 - fps - INFO - Shutting down...
+2024-05-04 14:11:50,282 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:11:52,159 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:11:53,387 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:11:54,342 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:11:54,351 - fps - ERROR - fromhex() argument must be str, not Byte[]
+2024-05-04 14:12:06,616 - fps - INFO - Shutting down...
+2024-05-04 14:12:07,211 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:12:09,659 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:12:10,731 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:12:11,962 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:12:11,978 - fps - ERROR - fromhex() argument must be str, not bytes
+2024-05-04 14:12:31,953 - fps - INFO - Shutting down...
+2024-05-04 14:12:32,574 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:12:35,027 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:12:36,299 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:12:37,421 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:12:37,432 - fps - ERROR - fromhex() argument must be str, not Byte[]
+2024-05-04 14:13:28,319 - fps - INFO - Shutting down...
+2024-05-04 14:13:28,941 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:13:30,609 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:13:31,734 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:13:32,784 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:14:26,582 - fps - INFO - Shutting down...
+2024-05-04 14:14:27,215 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:14:29,678 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:14:30,811 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:14:32,719 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:14:32,728 - fps - ERROR - Invalid base64-encoded string: number of data characters (157) cannot be 1 more than a multiple of 4
+2024-05-04 14:15:10,247 - fps - INFO - Shutting down...
+2024-05-04 14:15:11,877 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:15:13,332 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:15:14,089 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:15:14,595 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:15:14,604 - fps - ERROR - Invalid base64-encoded string: number of data characters (197) cannot be 1 more than a multiple of 4
+2024-05-04 14:15:30,232 - fps - INFO - Shutting down...
+2024-05-04 14:15:30,836 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:15:33,298 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:15:34,019 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:15:35,073 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:17:38,704 - fps - INFO - Shutting down...
+2024-05-04 14:17:39,294 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:17:41,255 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:17:42,184 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:17:43,042 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:18:57,005 - fps - INFO - Shutting down...
+2024-05-04 14:18:57,611 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:18:59,786 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:19:00,708 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:19:01,693 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:19:01,702 - fps - ERROR - Incorrect padding
+2024-05-04 14:19:47,114 - fps - INFO - Shutting down...
+2024-05-04 14:19:47,726 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:19:49,583 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:19:50,019 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:19:50,468 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:20:02,024 - fps - INFO - Shutting down...
+2024-05-04 14:20:02,643 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:20:04,493 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:20:05,834 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:20:06,183 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:20:06,191 - fps - ERROR - Invalid base64-encoded string: number of data characters (157) cannot be 1 more than a multiple of 4
+2024-05-04 14:21:36,636 - fps - INFO - Shutting down...
+2024-05-04 14:21:37,245 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:21:39,707 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:21:40,123 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:21:40,673 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:21:40,684 - fps - ERROR - Incorrect padding
+2024-05-04 14:21:57,948 - fps - INFO - Shutting down...
+2024-05-04 14:21:58,571 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:22:00,123 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:22:01,969 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:22:02,348 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:22:02,358 - fps - ERROR - Incorrect padding
+2024-05-04 14:22:15,234 - fps - INFO - Shutting down...
+2024-05-04 14:22:15,853 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:22:17,102 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:22:17,645 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:22:18,275 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:22:18,287 - fps - ERROR - Incorrect padding
+2024-05-04 14:22:49,510 - fps - INFO - Shutting down...
+2024-05-04 14:22:50,142 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:22:51,610 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:22:52,333 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:22:54,301 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:22:54,309 - fps - ERROR - Invalid base64-encoded string: number of data characters (157) cannot be 1 more than a multiple of 4
+2024-05-04 14:23:43,767 - fps - INFO - Shutting down...
+2024-05-04 14:23:44,385 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:23:46,638 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:23:47,612 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:23:48,534 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:46:37,603 - fps - INFO - Shutting down...
+2024-05-04 14:53:58,311 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:54:01,596 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:54:08,921 - fps - INFO - Shutting down...
+2024-05-04 14:54:09,535 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:54:11,912 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:54:22,202 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:54:22,830 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:54:47,162 - fps - INFO - Shutting down...
+2024-05-04 14:54:47,786 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:54:49,244 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:54:49,891 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:54:53,802 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:54:53,822 - fps - ERROR - Invalid base64-encoded string: number of data characters (185) cannot be 1 more than a multiple of 4
+2024-05-04 14:55:34,092 - fps - INFO - Shutting down...
+2024-05-04 14:55:34,676 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:55:36,134 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:55:36,781 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:55:37,921 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 14:55:37,937 - fps - ERROR - Invalid base64-encoded string: number of data characters (205) cannot be 1 more than a multiple of 4
+2024-05-04 14:56:01,526 - fps - INFO - Shutting down...
+2024-05-04 14:56:02,097 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 14:56:04,333 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 14:56:05,062 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 14:56:07,037 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:05:52,303 - fps - INFO - Shutting down...
+2024-05-04 15:05:52,942 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:05:54,391 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:05:55,426 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:05:56,510 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:05:56,549 - fps - ERROR - 'Byte[]' object has no attribute 'tolist'
+2024-05-04 15:06:20,307 - fps - INFO - Shutting down...
+2024-05-04 15:06:20,935 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:06:22,730 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:06:23,951 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:06:24,600 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:06:24,650 - fps - ERROR - 'Byte[]' object has no attribute 'tolist'
+2024-05-04 15:06:25,197 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:06:56,857 - fps - INFO - Shutting down...
+2024-05-04 15:06:57,478 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:06:59,541 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:07:00,266 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:07:03,080 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:07:03,119 - fps - ERROR - 'bytes' object has no attribute 'tolist'
+2024-05-04 15:07:16,819 - fps - INFO - Shutting down...
+2024-05-04 15:07:17,448 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:07:19,625 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:07:20,687 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:07:21,703 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:07:21,755 - fps - ERROR - Object of type bytes is not JSON serializable
+2024-05-04 15:07:23,081 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:10:40,873 - fps - INFO - Shutting down...
+2024-05-04 15:10:41,470 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:10:43,836 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:10:44,807 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:10:45,833 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:10:45,877 - fps - ERROR - 'FingerprintScanner' object has no attribute 'get_template_data'
+2024-05-04 15:11:51,584 - fps - INFO - Shutting down...
+2024-05-04 15:11:52,220 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:11:54,784 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:11:56,150 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:12:09,457 - fps - INFO - Shutting down...
+2024-05-04 15:12:10,094 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:12:13,391 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:12:14,724 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:12:15,686 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:12:15,698 - fps - ERROR - Invalid base64-encoded string: number of data characters (193) cannot be 1 more than a multiple of 4
+2024-05-04 15:12:53,247 - fps - INFO - Shutting down...
+2024-05-04 15:12:53,871 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:12:55,347 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:12:56,494 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:12:57,428 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:12:57,437 - fps - ERROR - Invalid base64-encoded string: number of data characters (161) cannot be 1 more than a multiple of 4
+2024-05-04 15:13:45,883 - fps - INFO - Shutting down...
+2024-05-04 15:13:46,504 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:13:48,372 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:13:49,497 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:13:58,181 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:13:58,193 - fps - ERROR - Incorrect padding
+2024-05-04 15:14:38,950 - fps - INFO - Shutting down...
+2024-05-04 15:14:39,551 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:14:42,975 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:14:43,994 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:14:44,953 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:14:44,989 - fps - ERROR - argument should be a bytes-like object or ASCII string, not 'list'
+2024-05-04 15:15:08,385 - fps - INFO - Shutting down...
+2024-05-04 15:15:09,006 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:15:11,516 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:15:12,561 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:15:13,597 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:15:13,634 - fps - ERROR - argument should be a bytes-like object or ASCII string, not 'list'
+2024-05-04 15:15:51,026 - fps - INFO - Shutting down...
+2024-05-04 15:15:51,633 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:15:53,101 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:15:54,152 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:15:55,082 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:15:55,119 - fps - ERROR - Object of type bytes is not JSON serializable
+2024-05-04 15:16:16,658 - fps - INFO - Shutting down...
+2024-05-04 15:16:17,254 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:16:18,911 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:16:19,635 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:16:20,092 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:16:20,137 - fps - ERROR - 'bytes' object has no attribute 'toList'
+2024-05-04 15:16:20,579 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:16:29,394 - fps - INFO - Shutting down...
+2024-05-04 15:16:29,996 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:16:31,456 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:16:32,622 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:16:33,034 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:16:33,080 - fps - ERROR - 'bytes' object has no attribute 'tolist'
+2024-05-04 15:16:33,694 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:18:44,973 - fps - INFO - Shutting down...
+2024-05-04 15:18:45,574 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:18:48,530 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:18:49,350 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:18:49,902 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:18:49,911 - fps - ERROR - Incorrect padding
+2024-05-04 15:34:12,280 - fps - INFO - Shutting down...
+2024-05-04 15:34:12,944 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:34:15,103 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:34:17,242 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:34:19,552 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:34:19,600 - fps - ERROR - argument should be a bytes-like object or ASCII string, not 'bool'
+2024-05-04 15:35:04,977 - fps - INFO - Shutting down...
+2024-05-04 15:35:05,591 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:35:07,360 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:35:07,903 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:35:09,443 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:35:09,490 - fps - ERROR - 'bytes' object has no attribute 'tolist'
+2024-05-04 15:35:34,296 - fps - INFO - Shutting down...
+2024-05-04 15:35:34,920 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:35:37,073 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:35:38,136 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:35:39,001 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:35:39,052 - fps - ERROR - 'str' object has no attribute 'tolist'
+2024-05-04 15:35:44,802 - fps - INFO - Shutting down...
+2024-05-04 15:35:45,429 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:35:46,891 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:35:47,306 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:35:47,859 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:35:47,875 - fps - ERROR - Invalid base64-encoded string: number of data characters (141) cannot be 1 more than a multiple of 4
+2024-05-04 15:36:51,672 - fps - INFO - Shutting down...
+2024-05-04 15:36:52,315 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:36:53,805 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:36:54,261 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:36:54,574 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:36:54,588 - fps - ERROR - argument should be bytes, buffer or ASCII string, not 'Byte[]'
+2024-05-04 15:38:27,523 - fps - INFO - Shutting down...
+2024-05-04 15:38:28,145 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:38:29,601 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:38:30,222 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:38:32,095 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:38:32,104 - fps - ERROR - argument should be bytes, buffer or ASCII string, not 'Byte[]'
+2024-05-04 15:39:28,671 - fps - INFO - Shutting down...
+2024-05-04 15:39:29,378 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:39:30,872 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:39:31,723 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:32,357 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:32,708 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:34,893 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:35,851 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:36,807 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:37,564 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:38,042 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:38,575 - fps - WARNING - Different finger. Please enter the original finger!
+2024-05-04 15:39:40,876 - fps - INFO - Shutting down...
+2024-05-04 15:39:41,518 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:39:42,992 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:39:44,016 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:39:45,096 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:39:45,145 - fps - ERROR - Incorrect padding
+2024-05-04 15:41:25,171 - fps - INFO - Shutting down...
+2024-05-04 15:41:25,766 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:41:27,227 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:41:27,537 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:41:27,912 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:41:27,922 - fps - ERROR - Incorrect padding
+2024-05-04 15:43:50,474 - fps - INFO - Shutting down...
+2024-05-04 15:43:51,102 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:43:54,962 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:43:55,574 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:43:57,137 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:47:35,969 - fps - INFO - Shutting down...
+2024-05-04 15:47:36,572 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:47:39,973 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:47:40,899 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:47:41,857 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:47:41,868 - fps - ERROR - SIMPLE not implemented
+2024-05-04 15:48:37,020 - fps - INFO - Shutting down...
+2024-05-04 15:48:37,623 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:48:39,074 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:48:40,108 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:48:41,094 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:48:41,103 - fps - ERROR - Invalid base64-encoded string: number of data characters (193) cannot be 1 more than a multiple of 4
+2024-05-04 15:48:49,802 - fps - INFO - Shutting down...
+2024-05-04 15:48:50,406 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:48:51,859 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:48:52,795 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:48:53,793 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:48:53,802 - fps - ERROR - Invalid base64-encoded string: number of data characters (149) cannot be 1 more than a multiple of 4
+2024-05-04 15:48:55,119 - fps - INFO - Shutting down...
+2024-05-04 15:48:55,729 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:48:57,186 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:48:58,335 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:48:59,367 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:49:11,375 - fps - INFO - Shutting down...
+2024-05-04 15:49:11,998 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:49:13,924 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:49:14,948 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:49:15,908 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:49:43,407 - fps - INFO - Shutting down...
+2024-05-04 15:49:44,123 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:49:47,026 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:49:47,567 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:49:48,192 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:49:48,748 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:50:35,483 - fps - INFO - Shutting down...
+2024-05-04 15:50:36,088 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:50:39,171 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:50:40,082 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:50:41,170 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:50:41,180 - fps - ERROR - Invalid base64-encoded string: number of data characters (221) cannot be 1 more than a multiple of 4
+2024-05-04 15:50:44,828 - fps - INFO - Shutting down...
+2024-05-04 15:50:45,437 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:50:46,891 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:50:47,521 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:50:48,379 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:50:48,388 - fps - ERROR - Invalid base64-encoded string: number of data characters (229) cannot be 1 more than a multiple of 4
+2024-05-04 15:50:52,641 - fps - INFO - Shutting down...
+2024-05-04 15:50:53,247 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:50:54,698 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:50:55,550 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:50:56,479 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:50:56,488 - fps - ERROR - Incorrect padding
+2024-05-04 15:51:00,813 - fps - INFO - Shutting down...
+2024-05-04 15:51:01,422 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:51:05,218 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:51:06,248 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:51:07,204 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:51:27,578 - fps - INFO - Shutting down...
+2024-05-04 15:51:28,187 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:51:29,717 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:51:30,646 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:51:31,643 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:51:31,653 - fps - ERROR - Incorrect padding
+2024-05-04 15:51:35,189 - fps - INFO - Shutting down...
+2024-05-04 15:51:35,798 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:51:37,252 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:51:37,979 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:51:39,072 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:51:47,511 - fps - INFO - Shutting down...
+2024-05-04 15:51:48,109 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:51:49,622 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:51:50,391 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:51:51,009 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:51:51,571 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:57:01,740 - fps - INFO - Shutting down...
+2024-05-04 15:57:02,342 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:57:04,299 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:57:05,574 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:57:06,496 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:57:06,525 - fps - ERROR - not enough image data
+2024-05-04 15:57:28,181 - fps - INFO - Shutting down...
+2024-05-04 15:57:28,767 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:57:30,220 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:57:30,941 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:57:31,894 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:57:31,922 - fps - ERROR - not enough image data
+2024-05-04 15:57:36,684 - fps - INFO - Shutting down...
+2024-05-04 15:57:37,277 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:57:38,719 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:57:39,376 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:57:40,007 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:57:40,036 - fps - ERROR - not enough image data
+2024-05-04 15:57:40,877 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:57:46,387 - fps - INFO - Shutting down...
+2024-05-04 15:57:47,016 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:57:49,279 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:57:49,907 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:57:50,492 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:57:50,532 - fps - ERROR - not enough image data
+2024-05-04 15:57:51,222 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 15:58:53,345 - fps - INFO - Shutting down...
+2024-05-04 15:58:53,950 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 15:58:55,616 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 15:58:56,336 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 15:58:57,699 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 15:58:57,728 - fps - ERROR - not enough image data
+2024-05-04 16:00:22,658 - fps - INFO - Shutting down...
+2024-05-04 16:00:23,263 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:00:37,060 - fps - INFO - Shutting down...
+2024-05-04 16:00:37,667 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:00:40,738 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:00:41,666 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:00:42,632 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:00:42,663 - fps - ERROR - 'Byte[]' object cannot be interpreted as an integer
+2024-05-04 16:01:03,189 - fps - INFO - Shutting down...
+2024-05-04 16:01:03,797 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:01:05,249 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:01:06,016 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:01:06,534 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:01:06,574 - fps - ERROR - not enough image data
+2024-05-04 16:01:07,100 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:01:20,148 - fps - INFO - Shutting down...
+2024-05-04 16:01:20,742 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:01:22,919 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:01:23,647 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:01:24,505 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:01:24,535 - fps - ERROR - not enough image data
+2024-05-04 16:02:03,793 - fps - INFO - Shutting down...
+2024-05-04 16:02:04,426 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:02:21,599 - fps - INFO - Shutting down...
+2024-05-04 16:02:22,228 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:02:23,692 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:02:24,308 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:02:25,409 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:02:25,448 - fps - ERROR - 'Byte[]' object cannot be interpreted as an integer
+2024-05-04 16:02:30,936 - fps - INFO - Shutting down...
+2024-05-04 16:02:31,539 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:02:35,305 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:02:36,745 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:02:37,737 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:02:37,777 - fps - ERROR - not enough image data
+2024-05-04 16:04:01,841 - fps - INFO - Shutting down...
+2024-05-04 16:04:02,442 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:04:03,908 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:04:04,424 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:04:04,896 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:04:04,926 - fps - ERROR - ZKFP2.Blob2Base64String() takes 2 positional arguments but 2049 were given
+2024-05-04 16:04:05,331 - fps - INFO - successfully identified the user: 1, Score: 99
+2024-05-04 16:04:25,378 - fps - INFO - Shutting down...
+2024-05-04 16:04:26,021 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:04:27,468 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:04:27,782 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:04:28,371 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:04:28,410 - fps - ERROR - not enough image data
+2024-05-04 16:04:28,795 - fps - INFO - successfully identified the user: 1, Score: 72
+2024-05-04 16:04:34,443 - fps - INFO - Shutting down...
+2024-05-04 16:04:35,021 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:04:37,806 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:04:38,222 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:04:39,183 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:04:39,223 - fps - ERROR - not enough image data
+2024-05-04 16:07:39,144 - fps - INFO - Shutting down...
+2024-05-04 16:07:39,743 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:07:41,200 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:07:44,674 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:07:46,340 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:07:46,388 - fps - ERROR - not enough image data
+2024-05-04 16:09:46,560 - fps - INFO - Shutting down...
+2024-05-04 16:09:47,184 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:09:50,157 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:09:50,465 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:09:52,337 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:09:52,365 - fps - ERROR - not enough image data
+2024-05-04 16:10:33,490 - fps - INFO - Shutting down...
+2024-05-04 16:10:34,115 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:10:35,676 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:10:36,104 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:10:38,108 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:10:38,147 - fps - ERROR - not enough image data
+2024-05-04 16:10:52,358 - fps - INFO - Shutting down...
+2024-05-04 16:10:52,932 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:10:54,373 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:10:55,003 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:11:00,670 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:11:00,710 - fps - ERROR - not enough image data
+2024-05-04 16:11:01,393 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:30:53,499 - fps - INFO - Shutting down...
+2024-05-04 16:30:54,219 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:30:56,593 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:30:57,736 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:30:59,282 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:30:59,312 - fps - ERROR - not enough image data
+2024-05-04 16:31:01,976 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:04,493 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:06,236 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:06,686 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:09,072 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:09,729 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:10,177 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:10,623 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:11,182 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:11,736 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:12,189 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:31:12,634 - fps - INFO - successfully identified the user: 1, Score: 100
+2024-05-04 16:33:39,186 - fps - INFO - Shutting down...
+2024-05-04 16:45:01,981 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:45:04,442 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:45:04,851 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:45:05,539 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:45:05,582 - fps - ERROR - not enough image data
+2024-05-04 16:45:06,063 - fps - INFO - successfully identified the user: 1, Score: 98
+2024-05-04 16:45:18,771 - fps - INFO - Shutting down...
+2024-05-04 16:45:19,398 - fps - INFO - 1 Devices found. Connecting to the first device.
+2024-05-04 16:45:21,348 - fps - INFO - Finger 1 registered successfully! 2 presses left.
+2024-05-04 16:45:22,090 - fps - INFO - Finger 2 registered successfully! 1 presses left.
+2024-05-04 16:45:22,711 - fps - INFO - Finger 3 registered successfully! 
+2024-05-04 16:45:22,752 - fps - ERROR - SIMPLE not implemented
+2024-05-04 16:53:43,669 - fps - INFO - Shutting down...
