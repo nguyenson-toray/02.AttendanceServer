@@ -12,6 +12,7 @@ import cv2
 from pyzbar.pyzbar import decode
 from pdf2image import convert_from_path
 from openpyxl import load_workbook
+import pyodbc
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.dirname(CWD)
@@ -23,9 +24,9 @@ collection_employee = db["Employee"]
 collection_att_log = db["AttLog"]
 collection_maternity_tracking = db["MaternityTracking"]
 collection_history_get_att_logs = db["HistoryGetAttLogs"]
-collection_last_modified_data_hr = db["LastModifiedDataHR"]
 collection_ot_register = db["OtRegister"]
 list_emp = []
+finger_emp_id_access_db = {}  #{"emp_id": 0001}
 ip_fs = r'\\192.168.1.13'
 ip_att_machines = []
 path_config = {}
@@ -39,25 +40,44 @@ def write_log(log):
             file.writelines(log_str)
             file.close()
     except Exception as e:
-        print(f'!!!!!!!!! write_log Exception :{e}') if enable_print else None
+        print(f'!!!!!!!!! write_log Exception :{e}')
 
 
+def read_access_db_hr(path: str):
+    log = f'{datetime.now()} read_access_db_hr: {path}\n'
+    print(log)
+    # print('pyodbc.drivers')
+    # for x in pyodbc.drivers():
+    #     print(x)
+    finger_emp_id_access_db.clear()
+    conn_str = f"Driver=Microsoft Access Driver (*.mdb, *.accdb);DBQ={path}"
+    # print(conn_str)
+    conn = pyodbc.connect(conn_str)
+    curs = conn.cursor()
+    sql = 'SELECT Badgenumber, SSN FROM USERINFO;'
+    try:
+        curs.execute(sql)
+        rows = curs.fetchall()
+        curs.close()
+        conn.close()
+        for row in rows:
+            # '1267', 'TIQN-1208'
+            row_1 = str(row)[1:-1]
+            finger_id = row_1.split(', ')[0][1:-1]  # remove first & last character '
+            emp_id = row_1.split(', ')[1][1:-1]  # remove first & last character '
+            finger_emp_id_access_db[emp_id] = int(finger_id)
+            log += f'    {emp_id}    {finger_id}; '
+    except Exception as e:
+        log += e
+        print(f'    {e}')
+    write_log(log+'\n')
 
-def excel_aio_to_db() -> bool:
+
+def excel_aio_to_db():
     # Read data from Excel using pandas
+    log = f'{datetime.now()} excel_aio_to_db\n'
+    print(log)
     excel_file = path_config['aio']
-    log = ''
-    last_modified_file = datetime.fromtimestamp(os.path.getmtime(excel_file)).replace(microsecond=0)
-    last_modified_db = collection_last_modified_data_hr.find_one()['aio'].replace(microsecond=0)
-    need_update = True if last_modified_file > last_modified_db else False
-    if not need_update:
-        # print(f"    No change from {last_modified_db} => Pass") if enable_print else None
-        return need_update
-    log += f"{datetime.now()} excel_aio_to_db\n    Changed at {last_modified_file} => Need update\n"
-    print(f"{datetime.now()} excel_aio_to_db\n    Changed at {last_modified_file} => Need update") if enable_print else None
-    query = {'_id': 1}
-    new_value = {"$set": {"aio": last_modified_file}}
-    collection_last_modified_data_hr.update_one(query, new_value)
     data = pd.read_excel(excel_file, keep_default_na=False, na_values='', na_filter=False)
     data.fillna("", inplace=True)
     # Convert pandas dataframe to dictionary (adjust based on your data structure)
@@ -66,21 +86,19 @@ def excel_aio_to_db() -> bool:
     count = 0
     for row in data_dict:
         # Update document in MongoDB collection based on a unique identifier (replace with your logic)
-        if row["Emp Code"] == '' or row["Emp Code"] == 0 or row["Fullname"] == '' or row["Fullname"] == 0 or row[
-            '_id'] == 0 or row['_id'] == '':
-            # print(f'BYPASS ROW - Empty Emp Code or Fullname or _id: {row}')
+        if row["Emp Code"] == '' or row["Emp Code"] == 0 or row["Fullname"] == '' or row["Fullname"] == 0:
+            # print(f'BYPASS ROW - Empty Emp Code or Fullname')
             continue
         if row["Fullname"] == 'Shoji Izumi' or row["Fullname"] == 'Amagata Osamu':
             count += 1
             log += f'   BYPASS Izumi, Amagata\n'
             continue
         count += 1
-        filter = {"_id": row["_id"]}  # Assuming "_id" is a unique identifier in your data
-        # update = {"$set": row}  # Update all fields in the document
-        fieldCollected = {}
         empId = 'TIQN-XXXX' if row['Emp Code'] == '' else row['Emp Code']
+        filter = {"empId": empId}  # Assuming "_id" is a unique identifier in your data
+        fieldCollected = {}
         name = 'No name' if row['Fullname'] == '' else row['Fullname']
-        attFingerId = 0 if row['Finger Id'] == '' else row['Finger Id']
+        attFingerId = find_finger_id_access_db(empId)
         department = '' if row['Department'] == '' else row['Department']
         section = '' if row['Section'] == '' else row['Section']
         group = '' if row['Group'] == '' else row['Group']
@@ -109,24 +127,12 @@ def excel_aio_to_db() -> bool:
     log += f"    {count} records\n"
     print(f"    {count} records") if enable_print else None
     write_log(log)
-    return need_update
 
 
-def excel_maternity_to_db(forceUpdate: bool):
-    log = ''
+def excel_maternity_to_db():
+    log = f'{datetime.now()} excel_maternity_to_db\n'
+    print(log)
     excel_file = path_config['maternity']
-    # check if file changed
-    last_modified_file = datetime.fromtimestamp(os.path.getmtime(excel_file)).replace(microsecond=0)
-    last_modified_db = collection_last_modified_data_hr.find_one()['maternity'].replace(microsecond=0)
-    needUpdateMaternity = forceUpdate if forceUpdate else True if last_modified_file > last_modified_db else False
-    if not needUpdateMaternity:
-        return
-    log += f"{datetime.now()} excelMaternityToMongoDb\n   Need to update, changed at {last_modified_file} => Need update\n"
-    print(
-        f"{datetime.now()} excelMaternityToMongoDb\n    Need to update, changed at {last_modified_file} => Need update") if enable_print else None
-    query = {'_id': 1}
-    new_value = {"$set": {"maternity": last_modified_file}}
-    collection_last_modified_data_hr.update_one(query, new_value)
     # Read -thai san
     data = pd.read_excel(excel_file, sheet_name='Thai sản', keep_default_na=False, na_values='',
                          na_filter=False, skiprows=3)
@@ -194,20 +200,10 @@ def excel_maternity_to_db(forceUpdate: bool):
     write_log(log)
 
 
-def excel_resign_to_db(forceUpdate: bool):
-    log = ''
+def excel_resign_to_db():
+    log = f'{datetime.now()} excel_resign_to_db\n'
+    print(log)
     excel_file = path_config['resign']
-    last_modified_file = datetime.fromtimestamp(os.path.getmtime(excel_file)).replace(microsecond=0)
-    last_modified_db = collection_last_modified_data_hr.find_one()['resign'].replace(microsecond=0)
-    needUpdateResign = forceUpdate if forceUpdate else True if last_modified_file > last_modified_db else False
-    if not needUpdateResign:
-        return forceUpdate
-    log += f"{datetime.now()} excelMaternityToMongoDb\n    Need to update, Changed at {last_modified_file} => Need update\n"
-    print(
-        f"{datetime.now()} excelMaternityToMongoDb\n    Need to update, Changed at {last_modified_file} => Need update") if enable_print else None
-    query = {'_id': 1}
-    new_value = {"$set": {"resign": last_modified_file}}
-    collection_last_modified_data_hr.update_one(query, new_value)
     data = pd.read_excel(excel_file, sheet_name='QD', keep_default_na=False, na_values='',
                          na_filter=False)
     data.fillna("", inplace=True)
@@ -228,7 +224,6 @@ def excel_resign_to_db(forceUpdate: bool):
                 print(f"    update {empIdResigned} to resigned on {resignDate}") if enable_print else None
                 collection_employee.update_one(query, update)
     write_log(log)
-    return forceUpdate
 
 
 def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
@@ -244,7 +239,7 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
             if int(his['machine']) == machineNo:
                 history = his
         last_time_db = history['lastTimeGetAttLogs']
-        last_time_machine=last_time_db
+        last_time_machine = last_time_db
         conn = machine.connect()
         print(f"Connecting machine : {machineNo} ...")
         # disable device, this method ensures no activity on the device while the process is run
@@ -263,7 +258,7 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
                     mydict['empId'] = emp_id
                 if emp_name != 'Not found':
                     mydict['name'] = emp_name
-                log1 = f'    Add: Machine: {mydict['machineNo']}       {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}      {mydict['attFingerId']}     {mydict['empId']}    {mydict['name']}\n'
+                log1 = f'    Machine: {mydict['machineNo']}       {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}      {mydict['attFingerId']}     {mydict['empId']}    {mydict['name']}\n'
                 collection_att_log.insert_one(mydict)
                 print(log1)
                 log += log1
@@ -274,8 +269,8 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
         collection_history_get_att_logs.update_one(my_query, new_value)
         conn.enable_device()
     except Exception as e:
-        print(f'     exception: {e}')
-        write_log(f'     exception: {e}')
+        print(f'     get_att_log_one_time exception: {e}')
+        write_log(f'     get_att_log_one_time exception: {e}')
     finally:
         if conn:
             conn.disconnect()
@@ -289,7 +284,7 @@ def live_capture_attendance(machine: ZK, machineNo) -> None:
     conn = None
     log = f'{datetime.now()} live_capture_attendance: machine {machineNo}\n'
     write_log(log)
-    print(f'{datetime.now()} live_capture_attendance: machine {machineNo}') if enable_print else None
+    print(f'{datetime.now()} live_capture_attendance: machine {machineNo}')
     try:
         conn = machine.connect()
         for attendance in conn.live_capture():
@@ -306,7 +301,7 @@ def live_capture_attendance(machine: ZK, machineNo) -> None:
                     mydict['empId'] = emp_id
                 if emp_name != 'Not found':
                     mydict['name'] = emp_name
-                log = f'    live_capture add: Machine: {mydict['machineNo']}      {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}     {mydict['attFingerId']}    {mydict['empId']}   {mydict['name']}\n'
+                log = f'    Live capture - Machine: {mydict['machineNo']}      {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}     {mydict['attFingerId']}    {mydict['empId']}   {mydict['name']}\n'
                 collection_att_log.insert_one(mydict)
                 print(log)
                 write_log(log)
@@ -323,18 +318,10 @@ def live_capture_attendance(machine: ZK, machineNo) -> None:
 
 
 def update_excel_to_mongoDb():
-    current_time = datetime.now()
-    read_config()
-    if (current_time.hour == 17 and current_time.minute < 30) or (current_time.hour == 16 and current_time.minute > 55):
-        log = f'{current_time} is PEAK TIME => bypass update_excel_to_mongoDb'
-        print(log) if enable_print else None
-        write_log(log)
-        return
-    need_update = excel_aio_to_db()
-    excel_maternity_to_db(need_update)
-    excel_resign_to_db(need_update)
-    if need_update:
-        get_list_emp()
+    excel_aio_to_db()
+    excel_maternity_to_db()
+    excel_resign_to_db()
+    get_list_emp()
 
 
 def get_list_emp():
@@ -357,7 +344,6 @@ def get_list_emp():
 
 def ot_register_detect_qr_and_save():
     log = ''
-    begin = datetime.now()
     ot_folder_path = path_config['ot_folder']
     ot_folder_pdf_imported_path = ot_folder_path + r"\01.Imported"
     ot_folder_pdf_path = ot_folder_path + r"\02.Pdf"
@@ -371,93 +357,70 @@ def ot_register_detect_qr_and_save():
     ot_last_ot_register_document = collection_ot_register.find().sort({'_id': -1}).limit(1)
     for doc in ot_last_ot_register_document:
         ot_last_request_id_db = doc['_id']
-    ot_all_file_names_registed = []
-    for doc in collection_last_modified_data_hr.find():
-        ot_all_file_names_registed.append(str(doc['otRequestFileName']))
-    ot_all_file_names_registed_str = str(ot_all_file_names_registed[0])
-    # print(f'ot_all_file_names_registed_str : {ot_all_file_names_registed_str}') if enable_print else None
     pdf_files = []
     try:
         # Use glob with wildcard for efficient PDF search
         for filename in os.listdir(ot_folder_pdf_path):
             if filename.endswith('.pdf'):  # and filename.startswith("202"):
                 pdf_files.append(filename)
-                # pdf_paths.append(os.path.join(ot_folder_pdf_path, filename))
-        # Sort PDFs by last modified time (descending) using reverse=True
-        # pdf_files.sort(key=os.path.getmtime)
-        # print(f"pdf_files: {pdf_files}")
     except Exception as e:
         log += f'   Exception : Error processing folder {ot_folder_pdf_path}: {e}\n'
         print(f"    Exception : Error processing folder {ot_folder_pdf_path}: {e}")
     for file_pdf in pdf_files:
-        # file_last_modified = datetime.fromtimestamp(os.path.getmtime(file_path))
-        print(f'*** Check file_pdf : {file_pdf}') if enable_print else None
-        # print(f'File: {file_path} => file_last_modified : {file_last_modified}')
-        if (not ot_all_file_names_registed_str.__contains__(file_pdf)):
-            file_path = os.path.join(ot_folder_pdf_path, file_pdf)
-            print(f'    => NOT YET ADDED  :{file_path}') if enable_print else None
-            log += f'    Read QR code in file: {file_path}\n'
-            try:
-                temp_pages = convert_from_path(file_path, dpi=300, output_file='qr.png', paths_only=True,
-                                               output_folder=ot_folder_pdf_path, poppler_path=my_poppler_path)
-                for temp_page in temp_pages:
-                    try:
-                        page = cv2.imread(temp_page)
-                        gray = cv2.cvtColor(page, cv2.COLOR_BGR2GRAY)  # Convert to grayscale for better detection
-                        # Detect QR codes
-                        qr_codes = decode(gray)
-                        # Extract data from QR codes
-                        for qr_code in qr_codes:
-                            qr = str(qr_code.data.decode('utf-8'))
-                            print(f'File : {file_pdf} :    Detected QR code: {qr}\n') if enable_print else None
-                            log += f'File : {file_pdf} :    Detected QR code: {qr}\n'
-                            ot_request_no = qr.split(';')[0].strip()
-                            date_request = qr.split(';')[1].strip()
-                            list_date_time = qr.split(';')[2].strip().split(', ')
-                            list_emp_id = qr.split(';')[3].strip().split(' ')
-                            # ot_last_request_time = file_last_modified
-                            if (not ot_request_no_on_db.__contains__(ot_request_no)):
-                                ot_request_no_on_db.append(ot_request_no)
-                                ot_last_request_id_db = qr_code_ot_register_to_db(ot_last_request_id_db, ot_request_no,
-                                                                                  date_request,
-                                                                                  list_date_time, list_emp_id)
-                    except Exception as e:
-                        log += f'   detect_qr : Error 1 :{e}\n'
-                        print(f"detect_qr : Error 1 :{e}") if enable_print else None
+        file_path = os.path.join(ot_folder_pdf_path, file_pdf)
+        log += f'    Read QR code in file: {file_path}\n'
+        print(f'    Read QR code in file: {file_path}') if enable_print else None
+        try:
+            temp_pages = convert_from_path(file_path, dpi=300, output_file='qr.png', paths_only=True,
+                                           output_folder=ot_folder_pdf_path, poppler_path=my_poppler_path)
+            for temp_page in temp_pages:
+                try:
+                    page = cv2.imread(temp_page)
+                    gray = cv2.cvtColor(page, cv2.COLOR_BGR2GRAY)  # Convert to grayscale for better detection
+                    # Detect QR codes
+                    qr_codes = decode(gray)
+                    # Extract data from QR codes
+                    for qr_code in qr_codes:
+                        qr = str(qr_code.data.decode('utf-8'))
+                        print(f'File : {file_pdf} :    Detected QR code: {qr}\n') if enable_print else None
+                        log += f'File : {file_pdf} :    Detected QR code: {qr}\n'
+                        ot_request_no = qr.split(';')[0].strip()
+                        date_request = qr.split(';')[1].strip()
+                        list_date_time = qr.split(';')[2].strip().split(', ')
+                        list_emp_id = qr.split(';')[3].strip().split(' ')
+                        if (not ot_request_no_on_db.__contains__(ot_request_no)):
+                            ot_request_no_on_db.append(ot_request_no)
+                            ot_last_request_id_db = qr_code_ot_register_to_db(ot_last_request_id_db, ot_request_no,
+                                                                              date_request,
+                                                                              list_date_time, list_emp_id)
+                            print(f'    Add QR to DB: {qr}') if enable_print else None
+                            log += f'    Add QR to DB: {qr}\n'
+                        else:
+                            print(f'    Duplicate QR on DB: {qr}') if enable_print else None
+                            log += f'    Duplicate QR on DB:: {qr}\n'
+                except Exception as e:
+                    log += f'   detect_qr : Error 1 :{e}\n'
+                    print(f"    detect_qr : Error 1 :{e}")
 
-            except Exception as e:
-                log += f'   detect_qr : Error 2 :{e}\n'
-                print(f"detect_qr : Error 2 :{e}") if enable_print else None
-            query = {'_id': 1}
-            ot_all_file_names_registed_str = ot_all_file_names_registed_str + '; ' + file_pdf
-            update = {
-                "$set": {'otRequestFileName': ot_all_file_names_registed_str,
-                         # "otRequestId": ot_last_request_id_db
-                         }}
-            collection_last_modified_data_hr.update_one(query, update)
-            src_path = os.path.join(ot_folder_pdf_path, file_pdf)
-            dst_path = os.path.join(ot_folder_pdf_imported_path, file_pdf)
-            os.rename(src_path, dst_path)  # move file pdf scaned to "01.Imported"
-            log += f'Scanned & moved to folder "01.Imported" : {file_pdf}'
-            print(f'   => add {file_pdf} to DB : ') if enable_print else None
-            for filename in os.listdir(ot_folder_pdf_path):
-                file_path = os.path.join(ot_folder_pdf_path, filename)
-                if filename.endswith('.ppm'):
-                    os.remove(file_path)
-                    print(f'    delete .ppm : {filename}') if enable_print else None
+        except Exception as e:
+            log += f'   detect_qr : Error 2 :{e}\n'
+            print(f"    detect_qr : Error 2 :{e}")
+        src_path = os.path.join(ot_folder_pdf_path, file_pdf)
+        dst_path = os.path.join(ot_folder_pdf_imported_path, file_pdf)
+        os.rename(src_path, dst_path)  # move file pdf scaned to "01.Imported"
+        log += f'   Scanned & moved to folder "01.Imported" : {file_pdf}'
+        print(f'    Scanned & moved to folder "01.Imported" : {file_pdf}') if enable_print else None
+        for filename in os.listdir(ot_folder_pdf_path):
+            file_path = os.path.join(ot_folder_pdf_path, filename)
+            if filename.endswith('.ppm'):
+                os.remove(file_path)
+                print(f'    Delete .ppm : {filename}') if enable_print else None
 
-        else:
-            print(f'  => Pass') if enable_print else None
     try:
         ot_register_append_excel(ot_folder_path, ot_excel_file_name)
     except Exception as e:
         log += f'   detect_qr Exception: Error 3 :{e}\n'
         print(f"    detect_qr Exception: Error 3 :{e}")
-
-    # end = datetime.now()
-    # time = end - begin
-    # print(f'    Total time scan QR : {time.total_seconds()}') if enable_print else None
-    # log += f'   Total time scan QR : {time.total_seconds()}\n'
     write_log(log)
 
 
@@ -562,6 +525,16 @@ def find_name_by_finger_id(finger_id: int) -> str:
     return name
 
 
+def find_finger_id_access_db(emp_id: str) -> int:
+    finger_id = 0
+    try:
+        finger_id = finger_emp_id_access_db[emp_id]
+    except:
+        # print(f'find_finger_id_access_db : Not found emp_id : {emp_id}')
+        pass
+    return finger_id
+
+
 def find_emp_id_by_finger_id(finger_id: int) -> str:
     emp_id = 'Not found'
     for emp in list_emp:
@@ -588,7 +561,7 @@ def sync_time_devices():
             conn.set_time(time)
     except Exception as e:
         log += f'   Sync time ERROR: {e}\n'
-        print("     Sync time ERROR : {}".format(e))
+        print(f"     Sync time ERROR : {e}")
     write_log(log)
 
 
@@ -596,12 +569,12 @@ def read_config():
     ip_att_machines.clear()
     log = f'{datetime.now()} read_config:\n'
     excel_file = r"..\02.Config\config.xlsx"
-    print(f'{datetime.now()} read_config : {excel_file}') if enable_print else None
+    print(f'{datetime.now()} read_config : {excel_file}')
     data_ip = pd.read_excel(excel_file, sheet_name='ip_machines')
     data_dict_ip = data_ip.to_dict(orient="records")
     for row in data_dict_ip:
         ip_att_machines.append(row['IP'])
-    log = f'     ip_att_machines: {ip_att_machines}'
+    log += f'     ip_att_machines: {ip_att_machines}\n'
     print(f'    ip_att_machines: {ip_att_machines}') if enable_print else None
     data_path = pd.read_excel(excel_file, sheet_name='path')
     data_dict_path = data_path.to_dict(orient="records")
@@ -621,16 +594,19 @@ def read_config():
             path_config['maternity_young_child'] = row['Path']
         if row['Name'] == 'maternity_leave':
             path_config['maternity_leave'] = row['Path']
+        if row['Name'] == 'access_db':
+            path_config['access_db'] = row['Path']
     print(f'    path_config: {path_config}') if enable_print else None
-    log += f'      path_config: {str(path_config)}'
+    log += f'      path_config: {str(path_config)}\n'
     write_log(log)
 
 
 if __name__ == "__main__":
+    enable_print = False
     main_log = f'---------------------------*** ATTENDANCE SERVER ***-----------------------------------------\n'
     main_log += f'START AT : {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}\n'
-    main_log += ''' 
-    schedule.every().sunday.at("06:00").do(sync_time_devices)
+    main_log += '''
+    schedule.every().sunday.at("05:00").do(sync_time_devices)
     schedule.every().day.at("09:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("11:55").do(update_excel_to_mongoDb)
     schedule.every().day.at("15:00").do(update_excel_to_mongoDb)
@@ -639,7 +615,8 @@ if __name__ == "__main__":
     main_log += f'\n-------------------------------------------------------------------------------------------\n'
     print(main_log)
     write_log(main_log)
-    enable_print = False
+    read_config()
+    read_access_db_hr(path_config['access_db'])
     update_excel_to_mongoDb()
     get_list_emp()
     machine_no = 1
@@ -649,10 +626,9 @@ if __name__ == "__main__":
             machine, machine_no, True), name=ip).start()
         machine_no += 1
     ot_register_detect_qr_and_save()
-    # -----------------------
-    schedule.every().sunday.at("06:00").do(sync_time_devices)
+    schedule.every().sunday.at("05:00").do(sync_time_devices)
     schedule.every().day.at("09:00").do(update_excel_to_mongoDb)
-    schedule.every().day.at("11:55").do(update_excel_to_mongoDb)
+    schedule.every().day.at("11:50").do(update_excel_to_mongoDb)
     schedule.every().day.at("15:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("18:00").do(update_excel_to_mongoDb)
     schedule.every(10).minutes.do(ot_register_detect_qr_and_save)
