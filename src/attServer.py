@@ -12,7 +12,6 @@ import cv2
 from pyzbar.pyzbar import decode
 from pdf2image import convert_from_path
 from openpyxl import load_workbook
-import pyodbc
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.dirname(CWD)
@@ -26,8 +25,8 @@ collection_maternity_tracking = db["MaternityTracking"]
 collection_history_get_att_logs = db["HistoryGetAttLogs"]
 collection_ot_register = db["OtRegister"]
 list_emp = []
-finger_emp_id_access_db = {}  #{"emp_id": 0001}
-ip_fs = r'\\192.168.1.13'
+
+ip_fs = r'\\10.0.1.5'
 ip_att_machines = []
 path_config = {}
 
@@ -43,34 +42,15 @@ def write_log(log):
         print(f'!!!!!!!!! write_log Exception :{e}')
 
 
-def read_access_db_hr(path: str):
-    log = f'{datetime.now()} read_access_db_hr: {path}\n'
-    print(log)
-    # print('pyodbc.drivers')
-    # for x in pyodbc.drivers():
-    #     print(x)
-    finger_emp_id_access_db.clear()
-    conn_str = f"Driver=Microsoft Access Driver (*.mdb, *.accdb);DBQ={path}"
-    # print(conn_str)
-    conn = pyodbc.connect(conn_str)
-    curs = conn.cursor()
-    sql = 'SELECT Badgenumber, SSN FROM USERINFO;'
+def write_log_error(log_error):
+    log_str = f'{str(datetime.now().strftime("%d-%m-%Y %H:%M:%S : "))} {str(log_error)}'
     try:
-        curs.execute(sql)
-        rows = curs.fetchall()
-        curs.close()
-        conn.close()
-        for row in rows:
-            # '1267', 'TIQN-1208'
-            row_1 = str(row)[1:-1]
-            finger_id = row_1.split(', ')[0][1:-1]  # remove first & last character '
-            emp_id = row_1.split(', ')[1][1:-1]  # remove first & last character '
-            finger_emp_id_access_db[emp_id] = int(finger_id)
-            log += f'    {emp_id}    {finger_id}; '
+        file_name = r"..\03.Logs\log_error_" + datetime.now().strftime("%Y%m%d") + ".txt"
+        with open(file_name, 'a', encoding="utf-8") as file:
+            file.writelines(log_str)
+            file.close()
     except Exception as e:
-        log += e
-        print(f'    {e}')
-    write_log(log+'\n')
+        print(f'!!!!!!!!! {datetime.now().strftime("%d-%m-%Y %H:%M:%S")} : write_log_error Exception :{e}')
 
 
 def excel_aio_to_db():
@@ -78,7 +58,7 @@ def excel_aio_to_db():
     log = f'{datetime.now()} excel_aio_to_db\n'
     print(log)
     excel_file = path_config['aio']
-    data = pd.read_excel(excel_file, keep_default_na=False, na_values='', na_filter=False)
+    data = pd.read_excel(excel_file,sheet_name='Sum', keep_default_na=False, na_values='', na_filter=False)
     data.fillna("", inplace=True)
     # Convert pandas dataframe to dictionary (adjust based on your data structure)
     data_dict = data.to_dict(orient="records")
@@ -86,23 +66,28 @@ def excel_aio_to_db():
     count = 0
     for row in data_dict:
         # Update document in MongoDB collection based on a unique identifier (replace with your logic)
-        if row["Emp Code"] == '' or row["Emp Code"] == 0 or row["Fullname"] == '' or row["Fullname"] == 0:
-            # print(f'BYPASS ROW - Empty Emp Code or Fullname')
+
+        if row["Emp Code"] == '' or row["Emp Code"] == 0 or row["Fullname"] == '' or row["Fullname"] == 0 or row[
+            '_id'] == 0 or row['_id'] == '':
+            # print(f'BYPASS ROW - Empty Emp Code or Fullname or _id: {row}')
             continue
-        if row["Fullname"] == 'Shoji Izumi' or row["Fullname"] == 'Amagata Osamu':
+        if row["Fullname"] == 'Shoji Izumi' or row["Fullname"] == 'Amagata Osamu' or row[
+            "Fullname"] == 'Hasegawa Ryoko':
             count += 1
-            log += f'   BYPASS Izumi, Amagata\n'
+            # log += f'   BYPASS Izumi, Amagata, Hasegawa\n'
             continue
         count += 1
-        empId = 'TIQN-XXXX' if row['Emp Code'] == '' else row['Emp Code']
-        filter = {"empId": empId}  # Assuming "_id" is a unique identifier in your data
+
+        filter = {"_id": row["_id"]}  # Assuming "_id" is a unique identifier in your data
+        # update = {"$set": row}  # Update all fields in the document
         fieldCollected = {}
+        empId = 'TIQN-XXXX' if row['Emp Code'] == '' else row['Emp Code']
         name = 'No name' if row['Fullname'] == '' else row['Fullname']
-        attFingerId = find_finger_id_access_db(empId)
+        attFingerId = 0 if row['Finger Id'] == '' else row['Finger Id']
         department = '' if row['Department'] == '' else row['Department']
         section = '' if row['Section'] == '' else row['Section']
-        group = '' if row['Group'] == '' else row['Group']
-        lineTeam = '' if row['Line/ Team'] == '' else row['Line/ Team']
+        group = '' if row['Group'] == '' or row['Group'] == 0 else row['Group']
+        lineTeam = group
         gender = '' if row['Gender'] == '' else row['Gender']
         position = '' if row['Position'] == '' else row['Position']
         level = '' if row['Level'] == '' else row['Level']
@@ -111,6 +96,7 @@ def excel_aio_to_db():
         supporting = '' if row['Supporting'] == '' else row['Supporting']
         dob = datetime.fromisoformat('1900-01-01') if str(type(row['DOB'])).find('datetime.datetime') == -1 else row[
             'DOB']
+        # print(f"{row['Emp Code']} {row['Fullname']} {row['Joining date']} {row['Line/ Team']}")
         joiningDate = datetime.fromisoformat('1900-01-01') if str(type(row['Joining date'])).find(
             'datetime.datetime') == -1 else row['Joining date']
         workStatus = 'Resigned' if (row['Working/Resigned'] == 0 or row['Working/Resigned'] == '') else 'Working'
@@ -121,11 +107,11 @@ def excel_aio_to_db():
              'directIndirect': directIndirect, 'sewingNonSewing': sewingNonSewing, 'supporting': supporting, 'dob': dob,
              'joiningDate': joiningDate, 'workStatus': workStatus, 'resignOn': resignOn})
         update = {"$set": fieldCollected}
-        log += f'   update #{count}: {empId}     {name}\n'
+        # log += f'   update #{count}: {empId}     {name}\n'
         # print(f"collection.update_one: {update}")
         collection_employee.update_one(filter, update, upsert=True)  # Upsert inserts if no document matches the filter
-    log += f"    {count} records\n"
-    print(f"    {count} records") if enable_print else None
+    log += f"    update {count} records\n"
+    print(f"    update {count} records") if enable_print else None
     write_log(log)
 
 
@@ -141,6 +127,7 @@ def excel_maternity_to_db():
     data_dict = data.to_dict(orient="records")
     # Loop through each data row
     empIdMaternity = 'TIQN-XXXX'
+    count = 0
     for row in data_dict:
         if row['STT'] != 0 and row['STT'] != '':
             empIdMaternity = row['MSNV']
@@ -157,19 +144,23 @@ def excel_maternity_to_db():
                                    'maternityLeaveEnd': maternityLeaveEnd}}
             else:
                 update = {"$set": {'workStatus': 'Maternity leave'}}
-            log += f'   update {empIdMaternity} to Maternity leave\n'
-            print(f"    update {empIdMaternity} to Maternity leave") if enable_print else None
+            count += 1
             collection_employee.update_one(query, update)
+    log += f'   update {count} records to Maternity leave\n'
+    print(f'   update {count} records to Maternity leave') if enable_print else None
 
     ##---------mang thai--pregnant-------
-    data = pd.read_excel(excel_file, sheet_name='mang thai', keep_default_na=False, na_values='',
+    data = pd.read_excel(excel_file, sheet_name='Mang thai', keep_default_na=False, na_values='',
                          na_filter=False, skiprows=3)
     data.fillna("", inplace=True)
     # Convert pandas dataframe to dictionary (adjust based on your data structure)
     data_dict = data.to_dict(orient="records")
     # Loop through each data row
+    count = 0
     for row in data_dict:
-        if row['STT'] != 0 and row['STT'] != '':
+        if row['STT'] != 0 and row['STT'] != '' and str(type(row['NGÀY NHẬN THÔNG TIN'])).find(
+                'datetime.datetime') != -1 and str(type(row['NGÀY DỰ SINH'])).find(
+            'datetime.datetime') != -1:
             empIdMaternity = row['MSNV']
             maternityBegin = row['NGÀY NHẬN THÔNG TIN']
             maternityEnd = row['NGÀY DỰ SINH']
@@ -177,8 +168,11 @@ def excel_maternity_to_db():
             update = {"$set": {'workStatus': 'Working pregnant', 'maternityBegin': maternityBegin,
                                'maternityEnd': maternityEnd}}
             collection_employee.update_one(query, update)
-            log += f"   update {empIdMaternity} to Working pregnant\n"
-            print(f"    update {empIdMaternity} to Working pregnant") if enable_print else None
+            count += 1
+        else:
+            write_log_error(f"!!! Wrong format at row: {row}\n")
+    log += f"   update {count} records to Working pregnant\n"
+    print(f"    update {count} records to Working pregnant") if enable_print else None
     ##---------Con nhỏ dưới 12 tháng---------
     data = pd.read_excel(excel_file, sheet_name='Con nhỏ dưới 12 tháng', keep_default_na=False, na_values='',
                          na_filter=False, skiprows=3)
@@ -186,17 +180,23 @@ def excel_maternity_to_db():
     # Convert pandas dataframe to dictionary (adjust based on your data structure)
     data_dict = data.to_dict(orient="records")
     # Loop through each data row
+    count = 0
     for row in data_dict:
-        if row['STT'] != 0 and row['STT'] != '':
+        if row['STT'] != 0 and row['STT'] != '' and str(type(row['NGÀY QUAY LẠI'])).find(
+                'datetime.datetime') != -1 and str(type(row['NGÀY CUỐI CÙNG THỜI GIAN NUÔI CON NHỎ'])).find(
+            'datetime.datetime') != -1:
             empIdMaternity = row['MSNV']
             maternityBegin = row['NGÀY QUAY LẠI']
             maternityEnd = row['NGÀY CUỐI CÙNG THỜI GIAN NUÔI CON NHỎ']
             query = {'empId': empIdMaternity}
             update = {"$set": {'workStatus': 'Working young child', 'maternityBegin': maternityBegin,
                                'maternityEnd': maternityEnd}}
-            log += f"   update {empIdMaternity} to Working young child\n"
-            print(f"   update {empIdMaternity} to Working young child") if enable_print else None
+            count += 1
             collection_employee.update_one(query, update)
+        else:
+            write_log_error(f"!!! Wrong format at row: {row}\n")
+    log += f"   update {count} records to Working young child\n"
+    print(f"   update {count} records to Working young child") if enable_print else None
     write_log(log)
 
 
@@ -204,25 +204,28 @@ def excel_resign_to_db():
     log = f'{datetime.now()} excel_resign_to_db\n'
     print(log)
     excel_file = path_config['resign']
-    data = pd.read_excel(excel_file, sheet_name='QD', keep_default_na=False, na_values='',
-                         na_filter=False)
+    data = pd.read_excel(excel_file, sheet_name='Resigned', keep_default_na=False, na_values='',
+                         na_filter=False, skiprows=1)
     data.fillna("", inplace=True)
     # Convert pandas dataframe to dictionary (adjust based on your data structure)
     data_dict = data.to_dict(orient="records")
     # Loop through each data row
+    count = 0
     for row in data_dict:
-        if row['Số QĐ'] != 0 and row['Số QĐ'] != '':
-            empIdResigned = row['MSNV']
-            resignDate = datetime.fromisoformat('2099-01-01') if (str(type(row['Ngày nghỉ việc'])).find(
-                'datetime.datetime') == -1 and str(type(row['Ngày nghỉ việc'])).find(
-                'timestamps.Timestamp') == -1) else row['Ngày nghỉ việc']
-
+        if row['Code'] != 0 and row['Code'] != '':
+            empIdResigned = row['Code']
+            resignDate = datetime.fromisoformat('2099-01-01') if (str(type(row['Resign on'])).find(
+                'datetime.datetime') == -1 and str(type(row['Resign on'])).find(
+                'timestamps.Timestamp') == -1) else row['Resign on']
+            print(f"empIdResigned : {empIdResigned}   resignDate : {resignDate}")
             if resignDate.year > 1900 and resignDate < datetime.now():
                 query = {'empId': empIdResigned}
                 update = {"$set": {'workStatus': 'Resigned', 'resignOn': resignDate}}
-                log += f"    update {empIdResigned} to resigned on {resignDate}\n"
-                print(f"    update {empIdResigned} to resigned on {resignDate}") if enable_print else None
+                count += 1
                 collection_employee.update_one(query, update)
+    print(f"    update {count} records to resigned") if enable_print else None
+    log += f"    update {count} records to resigned\n"
+
     write_log(log)
 
 
@@ -247,8 +250,15 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
         # another commands will be here!
         # Get attendances (will return list of Attendance object)
         attendances = conn.get_attendance()
+        a = datetime.now()
+        a.year
+        a.month
+        a.day
         for attendance in attendances:
+            date = attendance.timestamp
+            # if date.year==2024 and ((date.month==7 and date.day>25) or  date.month==8 ):
             if attendance.timestamp > last_time_db:
+
                 mydict = {"machineNo": machineNo, "uid": attendance.uid, "attFingerId": int(attendance.user_id),
                           "empId": 'No Emp Id', "name": 'No name',
                           "timestamp": attendance.timestamp}
@@ -258,7 +268,7 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
                     mydict['empId'] = emp_id
                 if emp_name != 'Not found':
                     mydict['name'] = emp_name
-                log1 = f'    Machine: {mydict['machineNo']}       {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}      {mydict['attFingerId']}     {mydict['empId']}    {mydict['name']}\n'
+                log1 = f'    M: {mydict['machineNo']}       {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}      {mydict['attFingerId']}     {mydict['empId']}    {mydict['name']}\n'
                 collection_att_log.insert_one(mydict)
                 print(log1)
                 log += log1
@@ -271,6 +281,7 @@ def get_att_log_one_time(machine: ZK, machineNo: int) -> int:
     except Exception as e:
         print(f'     get_att_log_one_time exception: {e}')
         write_log(f'     get_att_log_one_time exception: {e}')
+        write_log_error(f'     get_att_log_one_time exception: {e}')
     finally:
         if conn:
             conn.disconnect()
@@ -301,7 +312,7 @@ def live_capture_attendance(machine: ZK, machineNo) -> None:
                     mydict['empId'] = emp_id
                 if emp_name != 'Not found':
                     mydict['name'] = emp_name
-                log = f'    Live capture - Machine: {mydict['machineNo']}      {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}     {mydict['attFingerId']}    {mydict['empId']}   {mydict['name']}\n'
+                log = f'    L-M: {mydict['machineNo']}      {mydict['timestamp'].strftime("%d-%m-%Y %H:%M:%S")}     {mydict['attFingerId']}    {mydict['empId']}   {mydict['name']}\n'
                 collection_att_log.insert_one(mydict)
                 print(log)
                 write_log(log)
@@ -312,16 +323,21 @@ def live_capture_attendance(machine: ZK, machineNo) -> None:
     except Exception as e:
         print("     Exception: Process terminate : {}".format(e))
         write_log(f'    live_capture Exception: {e}')
+        write_log_error(f'    live_capture Exception: {e}')
     finally:
         if conn:
             conn.disconnect()
 
 
 def update_excel_to_mongoDb():
-    excel_aio_to_db()
-    excel_maternity_to_db()
-    excel_resign_to_db()
-    get_list_emp()
+    try:
+        excel_aio_to_db()
+        excel_maternity_to_db()
+        excel_resign_to_db()
+        get_list_emp()
+    except Exception as e:
+        print(f'update_excel_to_mongoDb: {e}')
+        write_log_error(f'update_excel_to_mongoDb: {e}')
 
 
 def get_list_emp():
@@ -331,8 +347,10 @@ def get_list_emp():
         count += 1
         list_emp.append({'attFingerId': emp['attFingerId'], 'empId': emp['empId'], 'name': emp['name']})
     print(f'{datetime.now()} get_list_emp: Total:{count}\n') if enable_print else None
-    log = f'{datetime.now()} get_list_emp:\n{list_emp} \nTotal:{count}\n'
-
+    log = f'{datetime.now()} get_list_emp: Total:{count}\n'
+    for emp in list_emp:
+        print(f'{emp['attFingerId']}  {emp['empId']}  {emp['name']}') if enable_print else None
+        log += f'{emp['attFingerId']}  {emp['empId']}  {emp['name']}\n'
     excel_file = r"..\02.Config\config.xlsx"
     print(f'{datetime.now()} read_config : {excel_file}') if enable_print else None
     data_phu_quy = pd.read_excel(excel_file, sheet_name='phú quý')
@@ -366,6 +384,7 @@ def ot_register_detect_qr_and_save():
     except Exception as e:
         log += f'   Exception : Error processing folder {ot_folder_pdf_path}: {e}\n'
         print(f"    Exception : Error processing folder {ot_folder_pdf_path}: {e}")
+        write_log_error(f'   Exception : Error processing folder {ot_folder_pdf_path}: {e}\n')
     for file_pdf in pdf_files:
         file_path = os.path.join(ot_folder_pdf_path, file_pdf)
         log += f'    Read QR code in file: {file_path}\n'
@@ -401,10 +420,12 @@ def ot_register_detect_qr_and_save():
                 except Exception as e:
                     log += f'   detect_qr : Error 1 :{e}\n'
                     print(f"    detect_qr : Error 1 :{e}")
+                    write_log_error(f'   detect_qr : Error 1 :{e}\n')
 
         except Exception as e:
             log += f'   detect_qr : Error 2 :{e}\n'
             print(f"    detect_qr : Error 2 :{e}")
+            write_log_error(f'   detect_qr : Error 2 :{e}\n')
         src_path = os.path.join(ot_folder_pdf_path, file_pdf)
         dst_path = os.path.join(ot_folder_pdf_imported_path, file_pdf)
         os.rename(src_path, dst_path)  # move file pdf scaned to "01.Imported"
@@ -421,6 +442,7 @@ def ot_register_detect_qr_and_save():
     except Exception as e:
         log += f'   detect_qr Exception: Error 3 :{e}\n'
         print(f"    detect_qr Exception: Error 3 :{e}")
+        write_log_error(f'   detect_qr Exception: Error 3 :{e}\n')
     write_log(log)
 
 
@@ -525,16 +547,6 @@ def find_name_by_finger_id(finger_id: int) -> str:
     return name
 
 
-def find_finger_id_access_db(emp_id: str) -> int:
-    finger_id = 0
-    try:
-        finger_id = finger_emp_id_access_db[emp_id]
-    except:
-        # print(f'find_finger_id_access_db : Not found emp_id : {emp_id}')
-        pass
-    return finger_id
-
-
 def find_emp_id_by_finger_id(finger_id: int) -> str:
     emp_id = 'Not found'
     for emp in list_emp:
@@ -562,6 +574,7 @@ def sync_time_devices():
     except Exception as e:
         log += f'   Sync time ERROR: {e}\n'
         print(f"     Sync time ERROR : {e}")
+        write_log_error(f'   Sync time ERROR: {e}\n')
     write_log(log)
 
 
@@ -602,8 +615,8 @@ def read_config():
 
 
 if __name__ == "__main__":
-    enable_print = False
-    main_log = f'---------------------------*** ATTENDANCE SERVER ***-----------------------------------------\n'
+    enable_print = True
+    main_log = f'---------------------------*** ATTENDANCE SERVER STARTUP ***-----------------------------------------\n'
     main_log += f'START AT : {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}\n'
     main_log += '''
     schedule.every().sunday.at("05:00").do(sync_time_devices)
@@ -616,7 +629,7 @@ if __name__ == "__main__":
     print(main_log)
     write_log(main_log)
     read_config()
-    read_access_db_hr(path_config['access_db'])
+
     update_excel_to_mongoDb()
     get_list_emp()
     machine_no = 1
@@ -626,7 +639,7 @@ if __name__ == "__main__":
             machine, machine_no, True), name=ip).start()
         machine_no += 1
     ot_register_detect_qr_and_save()
-    schedule.every().sunday.at("05:00").do(sync_time_devices)
+    schedule.every().sunday.at("06:00").do(sync_time_devices)
     schedule.every().day.at("09:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("11:50").do(update_excel_to_mongoDb)
     schedule.every().day.at("15:00").do(update_excel_to_mongoDb)
