@@ -13,6 +13,10 @@ from pyzbar.pyzbar import decode
 from pdf2image import convert_from_path
 from openpyxl import load_workbook
 
+# Constants
+ATT_LOG_INTERVAL_MINUTES = 6
+REAL_TIME = False  # Set to True for live capture, False for periodic polling
+
 CWD = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.dirname(CWD)
 sys.path.append(ROOT_DIR)
@@ -31,26 +35,49 @@ ip_att_machines = []
 path_config = {}
 
 
+# Backward compatibility - deprecated, use write_log_info instead
 def write_log(log):
-    log_str = str(log)
-    try:
-        file_name = r"..\03.Logs\log_" + datetime.now().strftime("%Y%m%d") + ".txt"
-        with open(file_name, 'a', encoding="utf-8") as file:
-            file.writelines(log_str)
-            file.close()
-    except Exception as e:
-        print(f'!!!!!!!!! write_log Exception :{e}')
+    """Deprecated: Use write_log_info instead"""
+    write_log_info(log)
 
 
-def write_log_error(log_error):
-    log_str = f'{str(datetime.now().strftime("%d-%m-%Y %H:%M:%S : "))} {str(log_error)}'
+def write_log_info(message, module_name="GENERAL"):
+    """Write info/success log with timestamp and module name"""
+    timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    log_str = f"{timestamp} [{module_name}] INFO: {str(message)}\n"
     try:
-        file_name = r"..\03.Logs\log_error_" + datetime.now().strftime("%Y%m%d") + ".txt"
+        file_name = r"..\03.Logs\info_" + datetime.now().strftime("%Y%m%d") + ".txt"
         with open(file_name, 'a', encoding="utf-8") as file:
-            file.writelines(log_str)
-            file.close()
+            file.write(log_str)
     except Exception as e:
-        print(f'!!!!!!!!! {datetime.now().strftime("%d-%m-%Y %H:%M:%S")} : write_log_error Exception :{e}')
+        print(f'!!!!!!!!! write_log_info Exception: {e}')
+
+
+def write_log_error(error_message, module_name="GENERAL", exception=None):
+    """Write error log with timestamp, module name and optional exception details"""
+    timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    log_str = f"{timestamp} [{module_name}] ERROR: {str(error_message)}"
+    if exception:
+        log_str += f" | Exception: {str(exception)}"
+    log_str += "\n"
+    try:
+        file_name = r"..\03.Logs\error_" + datetime.now().strftime("%Y%m%d") + ".txt"
+        with open(file_name, 'a', encoding="utf-8") as file:
+            file.write(log_str)
+    except Exception as e:
+        print(f'!!!!!!!!! write_log_error Exception: {e}')
+
+
+def write_log_debug(message, module_name="GENERAL"):
+    """Write debug log for detailed troubleshooting"""
+    timestamp = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+    log_str = f"{timestamp} [{module_name}] DEBUG: {str(message)}\n"
+    try:
+        file_name = r"..\03.Logs\debug_" + datetime.now().strftime("%Y%m%d") + ".txt"
+        with open(file_name, 'a', encoding="utf-8") as file:
+            file.write(log_str)
+    except Exception as e:
+        print(f'!!!!!!!!! write_log_debug Exception: {e}')
 
 
 def excel_aio_to_db():
@@ -64,12 +91,12 @@ def excel_aio_to_db():
     data_dict = data.to_dict(orient="records")
     # Loop through each data row
     count = 0
+
     for row in data_dict:
-        # Update document in MongoDB collection based on a unique identifier (replace with your logic)
 
         if row["Emp Code"] == '' or row["Emp Code"] == 0 or row["Fullname"] == '' or row["Fullname"] == 0 or row[
             '_id'] == 0 or row['_id'] == '':
-            # print(f'BYPASS ROW - Empty Emp Code or Fullname or _id: {row}')
+            print(f'BYPASS ROW - Empty Emp Code or Fullname or _id: {row}')
             continue
         if row["Fullname"] == 'Shoji Izumi' or row["Fullname"] == 'Amagata Osamu' or row[
             "Fullname"] == 'Hasegawa Ryoko':
@@ -92,8 +119,10 @@ def excel_aio_to_db():
         position = '' if row['Position'] == '' else row['Position']
         level = '' if row['Level'] == '' else row['Level']
         directIndirect = '' if row['Direct/ Indirect'] == '' else row['Direct/ Indirect']
-        sewingNonSewing = '' if row['Sewing/Non sewing'] == '' else row['Sewing/Non sewing']
-        supporting = '' if row['Supporting'] == '' else row['Supporting']
+        sewingNonSewing=''#remove column
+        # sewingNonSewing = '' if row['Sewing/Non sewing'] == '' else row['Sewing/Non sewing']
+        # supporting = '' if row['Supporting'] == '' else row['Supporting']
+        supporting='' #remove column
         dob = datetime.fromisoformat('1900-01-01') if str(type(row['DOB'])).find('datetime.datetime') == -1 else row[
             'DOB']
         # print(f"{row['Emp Code']} {row['Fullname']} {row['Joining date']} {row['Line/ Team']}")
@@ -158,11 +187,11 @@ def excel_maternity_to_db():
     # Loop through each data row
     count = 0
     for row in data_dict:
-        if row['STT'] != 0 and row['STT'] != '' and str(type(row['NGÀY NHẬN THÔNG TIN'])).find(
+        if row['STT'] != 0 and row['STT'] != '' and str(type(row['NGÀY VỀ CHẾ ĐỘ'])).find(
                 'datetime.datetime') != -1 and str(type(row['NGÀY DỰ SINH'])).find(
             'datetime.datetime') != -1:
             empIdMaternity = row['MSNV']
-            maternityBegin = row['NGÀY NHẬN THÔNG TIN']
+            maternityBegin = row['NGÀY VỀ CHẾ ĐỘ']
             maternityEnd = row['NGÀY DỰ SINH']
             query = {'empId': empIdMaternity}
             update = {"$set": {'workStatus': 'Working pregnant', 'maternityBegin': maternityBegin,
@@ -214,13 +243,13 @@ def excel_resign_to_db():
     for row in data_dict:
         if row['Code'] != 0 and row['Code'] != '':
             empIdResigned = row['Code']
-            resignDate = datetime.fromisoformat('2099-01-01') if (str(type(row['Resign on'])).find(
+            resignOnDate = datetime.fromisoformat('2099-01-01') if (str(type(row['Resign on'])).find(
                 'datetime.datetime') == -1 and str(type(row['Resign on'])).find(
                 'timestamps.Timestamp') == -1) else row['Resign on']
-            print(f"empIdResigned : {empIdResigned}   resignDate : {resignDate}")
-            if resignDate.year > 1900 and resignDate < datetime.now():
+            print(f"empIdResigned : {empIdResigned}   resignOnDate : {resignOnDate}")
+            if resignOnDate.year > 1900 and resignOnDate <= datetime.now():
                 query = {'empId': empIdResigned}
-                update = {"$set": {'workStatus': 'Resigned', 'resignOn': resignDate}}
+                update = {"$set": {'workStatus': 'Resigned', 'resignOn': resignOnDate}}
                 count += 1
                 collection_employee.update_one(query, update)
     print(f"    update {count} records to resigned") if enable_print else None
@@ -560,6 +589,11 @@ def get_att_log(machine: ZK, machineNo, real_time: bool):
     get_att_log_one_time(machine, machineNo)
     if real_time:
         live_capture_attendance(machine, machineNo)
+    else:
+        # Run periodic attendance log retrieval every 6 minutes
+        while True:
+            time.sleep(ATT_LOG_INTERVAL_MINUTES * 60)  # Convert minutes to seconds
+            get_att_log_one_time(machine, machineNo)
 
 
 def sync_time_devices():
@@ -620,6 +654,7 @@ if __name__ == "__main__":
     main_log += f'START AT : {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}\n'
     main_log += '''
     schedule.every().sunday.at("05:00").do(sync_time_devices)
+    schedule.every().day.at("07:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("09:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("11:55").do(update_excel_to_mongoDb)
     schedule.every().day.at("15:00").do(update_excel_to_mongoDb)
@@ -636,10 +671,11 @@ if __name__ == "__main__":
     for ip in ip_att_machines:
         machine = ZK(ip, port=4370, timeout=5, password=0, force_udp=False, ommit_ping=False)
         threading.Thread(target=get_att_log, args=(
-            machine, machine_no, True), name=ip).start()
+            machine, machine_no, REAL_TIME), name=ip).start()
         machine_no += 1
     ot_register_detect_qr_and_save()
     schedule.every().sunday.at("06:00").do(sync_time_devices)
+    schedule.every().day.at("07:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("09:00").do(update_excel_to_mongoDb)
     schedule.every().day.at("11:50").do(update_excel_to_mongoDb)
     schedule.every().day.at("15:00").do(update_excel_to_mongoDb)

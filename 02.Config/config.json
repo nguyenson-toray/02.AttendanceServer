@@ -1,0 +1,47 @@
+{
+  "att_machines": [
+    "10.0.1.41",
+    "10.0.1.42",
+    "10.0.1.43",
+    "10.0.1.44",
+    "10.0.1.45",
+    "10.0.1.46",
+    "10.0.1.47"
+  ],
+  "poppler_path": "C:\\Program Files\\poppler-24.02.0\\Library\\bin",
+  "bypass_names": [
+    "Shoji Izumi",
+    "Amagata Osamu",
+    "Hasegawa Ryoko"
+  ],
+  "file_server_root": "\\\\10.0.1.5\\tiqn\\03.Department\\01.Operation Management\\03.HR-GA",
+  "paths": {
+    "aio": "\\\\10.0.1.5\\tiqn\\03.Department\\01.Operation Management\\03.HR-GA\\01.HR\\Toray's employees information All in one.xlsx",
+    "resign": "\\\\10.0.1.5\\tiqn\\03.Department\\01.Operation Management\\03.HR-GA\\01.HR\\7 Resigned list\\Resigned report.xlsx",
+    "maternity": "\\\\10.0.1.5\\tiqn\\03.Department\\01.Operation Management\\03.HR-GA\\05.Nurse\\5. Maternity leave\\Danh sách nhân viên nữ mang thai 1.xlsx",
+    "ot_folder": "\\\\10.0.1.5\\tiqn\\03.Department\\01.Operation Management\\03.HR-GA\\01.HR\\4. EMPLOYEE\\7.OT request"
+  },
+  "sheets": {
+    "aio": "Sum",
+    "resign": "Resigned",
+    "maternity_leave": "Thai sản",
+    "maternity_pregnant": "Mang thai",
+    "maternity_child": "Con nhỏ dưới 12 tháng"
+  },
+  "schedule": {
+    "sync_time_day": "sunday",
+    "sync_time_at": "06:00",
+    "excel_sync_times": [
+      "07:00",
+      "09:00",
+      "11:50",
+      "15:00",
+      "18:00",
+      "21:50"
+    ],
+    "ot_scan_interval_minutes": 10,
+    "att_log_interval_minutes": 6,
+    "update_time_from": "05:00",
+    "update_time_to": "22:00"
+  }
+}
